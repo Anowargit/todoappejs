@@ -1,0 +1,22 @@
+<%- include('partials/header') %>
+
+<div class="todo-wrap">
+  <h2>Edit Todo</h2>
+
+  <% if (error) { %>
+    <div class="alert"><%= error %></div>
+  <% } %>
+
+  <form action="/todos/<%= todo.id %>?_method=PUT" method="POST" class="edit-form">
+    <input type="text" name="text" value="<%= todo.text %>">
+    <select name="priority">
+      <option value="High" <%= todo.priority === 'High' ? 'selected' : '' %>>High</option>
+      <option value="Medium" <%= todo.priority === 'Medium' ? 'selected' : '' %>>Medium</option>
+      <option value="Low" <%= todo.priority === 'Low' ? 'selected' : '' %>>Low</option>
+    </select>
+    <button type="submit" class="btn-save">Save</button>
+    <a class="btn-cancel" href="/">Cancel</a>
+  </form>
+</div>
+
+<%- include('partials/footer') %>
